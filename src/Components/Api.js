@@ -1,7 +1,7 @@
 import {ajax} from "rxjs/ajax";
 
 export class Api {
-    static URL = "";
+    static URL = "http://localhost:3100";
     static fetch = (url, method = "GET", body) => {
         return ajax( {
             url: Api.URL + url,

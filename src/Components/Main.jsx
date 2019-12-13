@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-import Item from "../Components/Item";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
-import {Api} from "../Api";
-import ItemList from "./ItemList";
+import Item from "./Item";
+import {Api} from "./Api";
+
 
 class Main extends Component {
     state = {items: []};
@@ -11,13 +12,16 @@ class Main extends Component {
         this.loadData();
     };
     loadData = () => {
-        Api.fetch("/items").then((items) => this.setState(items: items}));
+        Api.fetch("/products").then((items) => this.setState({items: items}));
     };
     render() {
         return (
-            <div>
-                <ItemList items={this.state.items} refresh={this.loadData} />
-            </div>
+
+                <Router>
+                    <Route path='/' exact>
+                <Item items={this.state.items} refresh={this.loadData} />
+                    </Route>
+                </Router>
         );
     }
 }
