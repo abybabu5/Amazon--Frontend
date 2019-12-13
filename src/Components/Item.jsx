@@ -1,6 +1,8 @@
 import React from 'react';
 import {Row, Col,Container} from 'reactstrap';
 import {Button, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader} from 'reactstrap';
+import ItemList from "../Components/ItemList";
+import {Api} from "../Api";
 
 
 class Item extends React.Component {
@@ -57,13 +59,13 @@ class Item extends React.Component {
                                     <form autoComplete="off" id="form">
                                         <div className="form-row">
                                             <div className="form-group col-md-6">
-                                                <label>Name</label>
+                                                <label>Product Name</label>
                                                 <input type="text" className="form-control" id="itemName" placeholder="Item Name"
                                                        defaultValue={this.state.itemName}
                                                        onChange={this.updateForm}/>
                                             </div>
                                             <div className="form-group col-md-6">
-                                                <label>Description</label>
+                                                <label>Product Description</label>
                                                 <input type="text" className="form-control" id="itemDescription"
                                                        placeholder="Item Description" defaultValue={this.state.itemDescription}
                                                        onChange={this.updateForm}/>
@@ -71,7 +73,7 @@ class Item extends React.Component {
 
                                         </div>
                                         <div className="form-group">
-                                            <label>Brand</label>
+                                            <label>Product Brand</label>
                                             <input type="text" className="form-control" id="itemBrand"
                                                    placeholder="Item Brand" onChange={this.updateForm}
                                                    defaultValue={this.state.itemBrand}/>
