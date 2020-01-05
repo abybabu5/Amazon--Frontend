@@ -11,6 +11,9 @@ class Item extends React.Component {
         if (this.state._id) {
             Api.fetch("/products/" + this.state._id, "PUT", this.state).then(res => {
                 console.log("edit", res);
+                const formData = new FormData();
+                formData.append("file", this.state.image);
+                Api.request("/products/image/"+ res._id, "POST", formData);
                 this.props.refresh();
             });
 
@@ -25,6 +28,9 @@ class Item extends React.Component {
     };
     updateForm = (e) => {
         this.setState({[e.target.id]: e.target.value});
+    };
+    updateFile = (e) => {
+        this.setState({[e.target.id]: e.target.files[0]});
     };
     formRequire = (e) => {
         return !(this.state.name && this.state.description);
@@ -47,7 +53,7 @@ class Item extends React.Component {
                     </div>
                         <div>
                             <button className="btn btn-primary mb-3" onClick={this.toggle}><i
-                                className="far fa-edit" id="newsfeedPencil"></i> Add Items
+                                className="far fa-edit" id="newsfeedPencil"></i> Add Products
                             </button>
                         </div>
                         <Modal isOpen={this.state.modal} toggle={this.toggle}>
@@ -81,7 +87,7 @@ class Item extends React.Component {
                                         </div>
                                         <div className="form-group">
                                             <label>Price</label>
-                                            <input type="number" className="form-control" id="price"
+                                            <input type="text" className="form-control" id="price"
                                                    placeholder="$" onChange={this.updateForm}
                                                    defaultValue={this.state.price}
                                                    onChange={this.updateForm}/>
@@ -95,11 +101,9 @@ class Item extends React.Component {
 
                                         </div>
                                     <div>
-                                        <label>Image URL</label>
-                                        <textarea  className="form-control" id="imageUrl"
-
-                                                   defaultValue={this.state.imageUrl}
-                                                   placeholder="http://..." onChange={this.updateForm}/>
+                                        <label>Image file</label>
+                                        <input type="file"  className="form-control" id="image"
+                                                   onChange={this.updateFile}/>
                                         </div>
                                         <button type="button" className="btn btn-primary"
                                                 disabled={this.formRequire() ? 'disabled' : null}

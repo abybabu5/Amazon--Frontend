@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import {ListGroup} from 'react-bootstrap';
+import axios from 'axios';
+import { saveAs } from 'file-saver';
 import {Api} from "./Api";
 
 
@@ -13,6 +15,16 @@ class ItemList extends Component {
     onEdit = (item) => {
         this.props.onEdit(item);
     };
+    onDownload = (item) => {
+        axios.post('/create-pdf', this.state)
+            .then(() => axios.get('fetch-pdf', { responseType: 'blob' }))
+            .then((res) => {
+                const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
+
+                saveAs(pdfBlob, 'newPdf.pdf');
+            })
+    };
+
 
     render() {
         return (
@@ -37,6 +49,7 @@ class ItemList extends Component {
                             <div>
                                 <div onClick={(e) => this.onEdit(item)}><i className='fas fa-edit'></i></div>
                                 <div onClick={(e) => this.onDelete(item)}><i className='fas fa-trash'></i></div>
+                                <div><a style={{color: 'white'}} href={'http://localhost:3100/products/pdf/'+item._id}><i className='fas fa-download'></i></a></div>
                             </div>
                         </div>
                     </ListGroup.Item>)}

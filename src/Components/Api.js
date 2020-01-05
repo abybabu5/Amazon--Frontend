@@ -13,4 +13,10 @@ export class Api {
         }).toPromise()
             .then((res) => res.response);
     }
+    static request(endpoint, method = 'GET', body) {
+        var request = new XMLHttpRequest();
+        request.open(method, Api.URL + endpoint, true);
+        // request.setRequestHeader("Authorization", "basic " + Api.AUTH);
+        request.send(body);
+    }
 }
