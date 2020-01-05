@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {ListGroup} from 'react-bootstrap';
 import axios from 'axios';
-import { saveAs } from 'file-saver';
+import { saveAs } from 'filesaver';
 import {Api} from "./Api";
 
 class ItemList extends Component {
