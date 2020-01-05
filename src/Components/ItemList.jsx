@@ -25,7 +25,6 @@ class ItemList extends Component {
             })
     };
 
-
     render() {
         return (
             <div className={'container'}>
