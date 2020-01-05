@@ -1,7 +1,7 @@
 import {ajax} from "rxjs/ajax";
 
 export class Api {
-    static URL = "https://amazon-be-aby.herokuapp.com/";
+    static URL = "https://amazon-be-aby.herokuapp.com";
     static fetch = (url, method = "GET", body) => {
         return ajax( {
             url: Api.URL + url,
