@@ -15,7 +15,8 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
     "reactstrap": "^8.1.1",
-    "rxjs": "^6.5.3"
+    "rxjs": "^6.5.3",
+    "axios": "latest"
   },
   "scripts": {
     "start": "react-scripts start",
