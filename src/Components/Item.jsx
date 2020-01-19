@@ -13,7 +13,7 @@ class Item extends React.Component {
                 console.log("edit", res);
                 const formData = new FormData();
                 formData.append("file", this.state.image);
-                Api.request("/products/image/"+ res._id, "POST", formData);
+                //Api.request("/products/image/"+ res._id, "POST", formData);
                 this.props.refresh();
             });
 
@@ -102,13 +102,16 @@ class Item extends React.Component {
                                         </div>
                                     <div>
                                         <label>Image file</label>
-                                        <input type="file"  className="form-control" id="image"
-                                                   onChange={this.updateFile}/>
+                                        {/*<input type="file"  className="form-control" id="image"*/}
+                                        {/*           onChange={this.updateFile}/>*/}
                                         </div>
+                                        <input type="text" className="form-control" id="imageUrl"
+                                               placeholder="http://..." onChange={this.updateForm}
+                                               defaultValue={this.state.imageUrl}
+                                               onChange={this.updateForm} />
                                         <button type="button" className="btn btn-primary"
                                                 disabled={this.formRequire() ? 'disabled' : null}
-                                                onClick={this.onFormSubmit}>Submit
-                                        </button>
+                                                onClick={this.onFormSubmit}>Submit</button>
                                     </form>
                                 </Container>
                             </ModalBody>

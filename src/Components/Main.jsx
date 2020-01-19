@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Item from "./Item";
 import {Api} from "./Api";
+import ProductDetail from "./ProductDetail";
 
 
 class Main extends Component {
@@ -12,7 +13,7 @@ class Main extends Component {
         this.loadData();
     };
     loadData = () => {
-        Api.fetch("/products").then((items) => this.setState({items: items}));
+        Api.fetch("/products").then((items) => this.setState({items: items.products}));
     };
 
     render() {
@@ -22,6 +23,7 @@ class Main extends Component {
                 <Route path='/' exact>
                     <Item items={this.state.items} refresh={this.loadData}/>
                 </Route>
+                <Route path='/product/:id' component={ProductDetail} />
             </Router>
         );
     }

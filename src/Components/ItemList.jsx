@@ -25,6 +25,7 @@ class ItemList extends Component {
     };
 
     render() {
+        if (!this.props.items) return <div>Loading...</div>;
         return (
             <div className={'container'}>
                 <ListGroup as="ul">
@@ -37,7 +38,7 @@ class ItemList extends Component {
                                 {item.imageUrl && <img src={item.imageUrl} className="product-image"/>}
                             </div>
                             <div className="details-container">
-                                <div className="product-name">{item.name}</div>
+                                <div className="product-name"><a style={{color: 'black'}} href={'/product/' + item._id}>{item.name}</a></div>
                                 <div className="product-description">{item.description}</div>
                                 <div>{item.brand}</div>
                                 <div>{item.price}</div>
