@@ -48,7 +48,7 @@ class ItemList extends Component {
                             <div>
                                 <div onClick={(e) => this.onEdit(item)}><i className='fas fa-edit'></i></div>
                                 <div onClick={(e) => this.onDelete(item)}><i className='fas fa-trash'></i></div>
-                                <div><a style={{color: 'white'}} href={'http://localhost:3100/products/pdf/'+item._id}><i className='fas fa-download'></i></a></div>
+                                <div><a style={{color: 'white'}} href={'http://be-marketplaceapi-postgresql.herokuapp.com/pdf/'+item._id}><i className='fas fa-download'></i></a></div>
                             </div>
                         </div>
                     </ListGroup.Item>)}
