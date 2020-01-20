@@ -1,7 +1,7 @@
 import {ajax} from "rxjs/ajax";
 
 export class Api {
-    static URL = "http://localhost:9500";
+    static URL = "http://be-marketplaceapi-postgresql.herokuapp.com";
     static fetch = (url, method = "GET", body) => {
         console.log(url);
         return ajax( {
